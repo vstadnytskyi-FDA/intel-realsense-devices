@@ -125,8 +125,26 @@ class Driver():
         return result
     depth_resolution = property(get_depth_resolution)
     
+    def get_all_available_options(self):
+        """
+        an auxiliary function to retrieve all available options for a given model
+        """
+        pipeline_profile = self.pipeline_profile
+        dev = pipeline_profile.get_device()
+        depth_sensor = None
+        for sensor in dev.query_sensors():
+            if sensor.is_depth_sensor():
+                depth_sensor = dev.query_sensors()[0]
+        for option in depth_sensor.get_supported_options():
+            print('---',option,'---')
+            print('description:',depth_sensor.get_option_description(option))
+            print('currennt value:',depth_sensor.get_option(option))
 
-
+    def set_laset_intensity():
+        """
+        sets laser intensity for L515 depth camera
+        """
+        pass
 
 if __name__ is "__main__":
     from matplotlib import pyplot as plt

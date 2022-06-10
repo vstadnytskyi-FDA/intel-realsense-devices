@@ -1,4 +1,5 @@
-# l515 camera test 
+# Intel RealSense Lidar L515 Example
+# In this example, we create multiple pipelines to take advantage of higher acquisition rate for gyroscope and accelerator
 
 #NOTE, MAKE SURE TO CHANGE SERIAL NUMBER
 
@@ -13,6 +14,7 @@ import subprocess
 def initialize_camera():
     ctx = rs.context()
     devices = ctx.query_devices()
+    dev = None
     for device in devices:
         print(' ----- Available devices ----- ')
         print('  Device PID: ',  device.get_info(rs.camera_info.product_id))
@@ -27,7 +29,7 @@ def initialize_camera():
             print('device not found')
  
     serial=dev.get_info(rs.camera_info.serial_number)
-    # start the frames pipe
+    # start the frames pipeline
     pipeline = rs.pipeline()
     conf = rs.config()
     conf.enable_device(serial)   #test of enable device
