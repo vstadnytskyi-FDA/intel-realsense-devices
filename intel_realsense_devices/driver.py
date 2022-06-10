@@ -140,7 +140,11 @@ class Driver():
             print('description:',depth_sensor.get_option_description(option))
             print('currennt value:',depth_sensor.get_option(option))
 
-
+    def set_laset_intensity():
+        """
+        sets laser intensity for L515 depth camera
+        """
+        pass
 
 if __name__ is "__main__":
     from matplotlib import pyplot as plt
